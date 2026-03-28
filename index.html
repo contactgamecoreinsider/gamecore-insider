@@ -267,7 +267,6 @@
 
     const postContainer = document.getElementById('blog-posts');
 
-    // Function to render posts based on category
     function displayPosts(category = 'all') {
         postContainer.innerHTML = '';
         
@@ -282,21 +281,23 @@
                         <span class="category-tag">${post.cat}</span>
                         <h3>${post.title}</h3>
                         <p>${post.desc}</p>
-                        <a href="${post.url}" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem;">READ MORE →</a>
+                        <a href="./${post.url}" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem;">READ MORE →</a>
                     </div>
                 </article>
             `;
         });
     }
 
-    // This runs when you click a nav link
     function filterPosts(category) {
         displayPosts(category);
-        // Optional: Scroll down to the posts section smoothly
-        postContainer.scrollIntoView({ behavior: 'smooth' });
+        // Scroll to the posts section
+        window.scrollTo({
+            top: postContainer.offsetTop - 100,
+            behavior: 'smooth'
+        });
     }
 
-    // Initial load: show everything
+    // Initial render
     displayPosts();
 </script>
 </body>
