@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameCore Insider | Gaming Tech, News & Performance</title>
+    <meta name="description" content="Professional gaming insights, from Hypervisor tech to Denuvo news and FPS optimization guides.">
+    <style>
+        :root {
+            --primary: #7c4dff;
+            --secondary: #00e5ff;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--secondary); }
+
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 5%;
+            background: linear-gradient(45deg, #0f172a 30%, #1e1b4b 100%);
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+
+        /* Main Content Grid */
+        .container { display: grid; grid-template-columns: 1fr 300px; gap: 30px; padding: 40px 5%; }
+
+        .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid #334155;
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+        .card-content { padding: 20px; }
+        .category-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card h3 { margin: 0 0 10px 0; font-size: 1.25rem; }
+        .card p { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* Sidebar / Ads */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .ad-placeholder {
+            background: #111827;
+            border: 1px dashed #475569;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            padding: 40px 5%;
+            background: #020617;
+            text-align: center;
+            border-top: 1px solid #334155;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+        .nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: color 0.3s;
+    cursor: pointer; /* Makes the mouse turn into a hand */
+}
+.nav-links a:hover {
+    color: var(--secondary);
+}
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem !important; /* Shrink title on phones */
+    }
+    
+    .nav-links {
+        display: none; /* We can hide nav links or stack them for mobile later */
+    }
+    
+    #blog-posts {
+        grid-template-columns: 1fr !important; /* Stack cards in a single column */
+        padding: 10px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">GameCore<span>Insider</span></a>
+    <div class="nav-links">
+        <a href="#" onclick="filterPosts('Gaming News')">News</a>
+        <a href="#" onclick="filterPosts('Tech')">Tech</a>
+        <a href="#" onclick="filterPosts('Performance')">Performance</a>
+        <a href="#" onclick="filterPosts('Hypervisor')">Hypervisor</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <h1>Next-Gen Gaming Insights</h1>
+    <p>In-depth analysis of gaming hardware, software, and industry trends.</p>
+</header>
+
+<div class="container">
+    <main>
+        <div class="post-grid" id="blog-posts">
+            </div>
+    </main>
+
+    <aside class="sidebar">
+        <div class="ad-placeholder">ADVERTISEMENT - GOOGLE ADSENSE</div>
+        <div class="card" style="padding: 20px;">
+            <h4>Trending Topics</h4>
+            <ul style="color: var(--text-dim); padding-left: 20px;">
+                <li>Denuvo Impact 2026</li>
+                <li>Windows 11 VBS Settings</li>
+                <li>Unreal Engine 5.5 Performance</li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<footer style="background: #0f172a; padding: 60px 5%; border-top: 1px solid #1e293b; margin-top: 80px;">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+        <div style="max-width: 300px;">
+            <a href="index.html" class="logo">GameCore<span>Insider</span></a>
+            <p style="color: var(--text-dim); margin-top: 15px;">Your source for deep-dives into gaming hardware, software, and performance optimization.</p>
+        </div>
+        
+        <div>
+            <h4 style="color: #fff; margin-bottom: 15px;">Categories</h4>
+            <ul style="list-style: none; padding: 0; color: var(--text-dim);">
+                <li style="margin-bottom: 8px;"><a href="#" onclick="filterPosts('Gaming News')" style="color: inherit; text-decoration: none;">Gaming News</a></li>
+                <li style="margin-bottom: 8px;"><a href="#" onclick="filterPosts('Tech')" style="color: inherit; text-decoration: none;">Tech</a></li>
+                <li style="margin-bottom: 8px;"><a href="#" onclick="filterPosts('Performance')" style="color: inherit; text-decoration: none;">Performance</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 style="color: #fff; margin-bottom: 15px;">Company</h4>
+            <ul style="list-style: none; padding: 0; color: var(--text-dim);">
+                <li style="margin-bottom: 8px;"><a href="about.html" style="color: inherit; text-decoration: none;">About Us</a></li>
+                <li style="margin-bottom: 8px;"><a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></li>
+                <li style="margin-bottom: 8px;"><a href="contact.html" style="color: inherit; text-decoration: none;">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #1e293b; color: var(--text-dim); font-size: 0.9rem;">
+        &copy; 2026 GameCore Insider. All rights reserved.
+    </div>
+</footer>
+<script>
+    const posts = [
+        {
+            title: "What is a Hypervisor in Gaming?",
+            cat: "Hypervisor",
+            desc: "Understanding how virtualization software impacts your gaming performance and system security.",
+            url: "posts/what-is-hypervisor.html"
+        },
+        {
+            title: "Why Denuvo Remains Controversial",
+            cat: "Gaming News",
+            desc: "A deep dive into why DRM continues to be the most debated topic in PC gaming.",
+            url: "posts/denuvo-controversy-2026.html"
+        },
+        {
+            title: "Ultimate FPS Optimization Guide",
+            cat: "Performance",
+            desc: "Boost your frames per second with these essential Windows and in-game tweaks.",
+            url: "posts/fps-optimization-guide.html"
+        },
+        {
+            title: "Is a Hypervisor Safe or Risky?",
+            cat: "Hypervisor",
+            desc: "The balance between system security and raw gaming performance.",
+            url: "posts/hypervisor-safety-risks.html"
+        },
+        {
+            title: "The Shift Toward Subscription Gaming",
+            cat: "Gaming News",
+            desc: "How services like Game Pass are changing the way we play in 2026.",
+            url: "posts/future-of-gaming-subscriptions.html"
+        },
+        {
+            title: "Best Settings for Performance 2026",
+            cat: "Performance",
+            desc: "Mastering DLSS, FSR, and frame generation for the ultimate smooth experience.",
+            url: "posts/best-gaming-settings-guide.html"
+        },
+        {
+            title: "The Future of Neural Rendering",
+            cat: "Tech",
+            desc: "How AI is taking over the way games calculate light and textures.",
+            url: "posts/future-of-neural-rendering.html"
+        },
+        {
+            title: "Handheld Emulation: The New Frontier",
+            cat: "Tech",
+            desc: "Playing high-end console titles on your mobile hardware and handheld PCs.",
+            url: "posts/handheld-emulation-guide.html"
+        },
+        {
+            title: "Kernel-Level Anti-Cheat Explained",
+            cat: "Tech",
+            desc: "Why modern games need 'Ring 0' access to stop the latest wave of cheaters.",
+            url: "posts/kernel-level-anticheat-explained.html"
+        },
+        {
+            title: "Best Budget Gaming Rig 2026",
+            cat: "Performance",
+            desc: "Building a high-performance machine without breaking the bank.",
+            url: "posts/best-budget-gaming-rig-2026.html"
+        }
+    ];
+
+    const postContainer = document.getElementById('blog-posts');
+
+    // Function to render posts based on category
+    function displayPosts(category = 'all') {
+        postContainer.innerHTML = '';
+        
+        const filtered = category === 'all' 
+            ? posts 
+            : posts.filter(p => p.cat === category);
+
+        filtered.forEach(post => {
+            postContainer.innerHTML += `
+                <article class="card">
+                    <div class="card-content">
+                        <span class="category-tag">${post.cat}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.desc}</p>
+                        <a href="${post.url}" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.8rem;">READ MORE →</a>
+                    </div>
+                </article>
+            `;
+        });
+    }
+
+    // This runs when you click a nav link
+    function filterPosts(category) {
+        displayPosts(category);
+        // Optional: Scroll down to the posts section smoothly
+        postContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Initial load: show everything
+    displayPosts();
+</script>
+</body>
+</html>
