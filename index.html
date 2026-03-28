@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameCore Insider | Gaming Tech & Performance</title>
+    <title>GameCore Insider | Next-Gen Gaming News & Tech</title>
     <style>
         :root {
             --primary: #7c4dff;
@@ -12,23 +12,22 @@
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
-            --nav-bg: rgba(15, 23, 42, 0.95);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             margin: 0;
-            padding-top: 70px;
+            padding-top: 80px;
         }
 
-        /* --- RESTORED NAVIGATION --- */
+        /* Fixed Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--nav-bg);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid #334155;
             z-index: 1000;
@@ -54,22 +53,18 @@
             text-decoration: none;
             margin-left: 25px;
             font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
         }
 
-        .nav-links a:hover { color: var(--secondary); }
-
         header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 60px 5%;
             text-align: center;
-            padding: 80px 20px;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid #334155;
         }
 
         header h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin: 0;
-            letter-spacing: -1px;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -77,7 +72,7 @@
 
         .container {
             max-width: 1200px;
-            margin: 0 auto 60px;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
@@ -87,59 +82,41 @@
             gap: 25px;
         }
 
-        /* --- GAMER STYLE CARDS --- */
         .card {
             background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
             border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 30px;
-            text-decoration: none;
-            color: inherit;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             border-color: var(--secondary);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .cat-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 800;
+        .category {
             color: var(--secondary);
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .card h3 {
-            margin: 0 0 15px 0;
-            font-size: 1.4rem;
-            line-height: 1.2;
-        }
-
-        .card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .btn-text {
-            color: var(--primary);
+            font-size: 0.75rem;
             font-weight: 700;
-            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        /* --- RESTORED FOOTER TABS --- */
+        .card h3 { margin: 0 0 15px 0; font-size: 1.4rem; }
+
+        .card p { color: var(--text-dim); font-size: 0.95rem; flex-grow: 1; }
+
         footer {
+            margin-top: 60px;
+            padding: 40px 5%;
             border-top: 1px solid #334155;
-            padding: 50px 5%;
             text-align: center;
-            background: #0a0f1d;
         }
 
         .footer-links a {
@@ -148,13 +125,6 @@
             margin: 0 15px;
             font-size: 0.85rem;
         }
-
-        .footer-links a:hover { color: #fff; }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-        }
     </style>
 </head>
 <body>
@@ -162,62 +132,64 @@
 <nav>
     <a href="index.html" class="logo">GameCore<span>Insider</span></a>
     <div class="nav-links">
-        <a href="#news">News</a>
-        <a href="#tech">Tech</a>
-        <a href="#performance">Performance</a>
+        <a href="index.html">News</a>
         <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
     </div>
 </nav>
 
 <header>
-    <h1>Next-Gen Gaming Insights</h1>
-    <p style="color: var(--text-dim); max-width: 600px; margin: 20px auto;">Deep dives into performance optimization, emulation, and the technology shaping the future of gaming.</p>
+    <h1>GameCore<span>Insider</span></h1>
+    <p style="color: var(--text-dim); margin-top: 10px;">Hardware, Performance, and Technical Deep Dives</p>
 </header>
 
 <div class="container">
-    <div class="grid" id="main-grid"></div>
+    <div class="grid" id="post-grid"></div>
 </div>
 
 <footer>
     <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="contact.html">Contact</a>
         <a href="about.html">About</a>
     </div>
-    <p style="color: #475569; font-size: 0.8rem; margin-top: 20px;">&copy; 2026 GameCore Insider. All rights reserved.</p>
 </footer>
 
 <script>
     const posts = [
-        /* The 5 New Trending Articles */
-        { title: "Crimson Desert PC Optimization Guide", cat: "Performance", desc: "Achieve a stable 60 FPS in 2026's biggest RPG using mid-tier graphics hardware.", url: "crimson-desert-optimization-guide.html" },
-        { title: "Marathon (2026) Starter Guide", cat: "Gaming News", desc: "Bungie's extraction shooter is brutal. Here are the best factions for new players.", url: "marathon-2026-starter-guide.html" },
+        /* The 5 New Articles */
+        { title: "Crimson Desert PC Optimization Guide", cat: "Performance", desc: "Achieve a stable 60 FPS in 2026's biggest RPG.", url: "crimson-desert-optimization-guide.html" },
+        { title: "Marathon (2026) Starter Guide", cat: "Gaming News", desc: "Bungie's extraction shooter is brutal. Here are the best factions.", url: "marathon-2026-starter-guide.html" },
         { title: "Switch 2 Boost Mode Explained", cat: "Tech", desc: "How to tap into extra portable power for the ultimate handheld experience.", url: "switch-2-boost-mode-guide.html" },
-        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Gaming News", desc: "A look at how generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
-        { title: "Mid-Tier PC Maintenance Guide", cat: "Performance", desc: "Keep your hardware running like new with these essential cooling and cleaning tips.", url: "mid-tier-hardware-maintenance-guide.html" },
+        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Tech", desc: "How generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
+        { title: "Mid-Tier PC Maintenance Guide", cat: "Hardware", desc: "Essential cooling and cleaning tips for your gaming rig.", url: "mid-tier-hardware-maintenance-guide.html" },
         
-        /* Your Original Technical Articles (from Sitemap) */
-        { title: "What is a Hypervisor?", cat: "Tech", desc: "Understanding the layer between your hardware and your gaming OS.", url: "what-is-hypervisor.html" },
-        { title: "Hypervisor Safety & Risks", cat: "Security", desc: "Is using a hypervisor for gaming safe? We analyze the potential vulnerabilities.", url: "hypervisor-safety-risks.html" },
-        { title: "The Denuvo Controversy 2026", cat: "Gaming News", desc: "Why DRM continues to be the most debated topic in PC gaming performance.", url: "denuvo-controversy-2026.html" },
-        { title: "FPS Optimization Masterclass", cat: "Performance", desc: "The definitive guide to squeezing every frame out of your mid-range rig.", url: "fps-optimization-guide.html" },
-        { title: "Future of Gaming Subscriptions", cat: "Tech", desc: "How the industry is shifting from ownership to service models.", url: "future-of-gaming-subscriptions.html" },
-        { title: "Best Gaming Settings Guide", cat: "Performance", desc: "Universal settings that improve visibility and latency in any competitive title.", url: "best-gaming-settings-guide.html" },
-        { title: "The Rise of Neural Rendering", cat: "Tech", desc: "How AI is replacing traditional pixels to create photorealistic worlds.", url: "future-of-neural-rendering.html" },
-        { title: "Handheld Emulation Guide", cat: "Emulation", desc: "Running high-end console titles on your mobile device in 2026.", url: "handheld-emulation-guide.html" },
-        { title: "Optimizing BotW on Mobile", cat: "Emulation", desc: "How to use UltraCam and 60FPS mods for the smoothest experience.", url: "botw-mobile-optimization.html" }
+        /* The Original 10 Articles from your Files */
+        { title: "Best Budget Gaming Rig 2026", cat: "Hardware", desc: "The best price-to-performance parts for 1080p and 1440p gaming.", url: "best-budget-gaming-rig-2026.html" },
+        { title: "Best Gaming Settings Guide", cat: "Performance", desc: "Universal settings to improve visibility and reduce latency.", url: "best-gaming-settings-guide.html" },
+        { title: "The Denuvo Controversy 2026", cat: "News", desc: "An updated look at DRM's impact on CPU performance.", url: "denuvo-controversy-2026.html" },
+        { title: "FPS Optimization Masterclass", cat: "Performance", desc: "Deep dive into kernel-level tweaks and registry optimizations.", url: "fps-optimization-guide.html" },
+        { title: "Future of Gaming Subscriptions", cat: "News", desc: "Are we moving to a 'No Ownership' future for digital games?", url: "future-of-gaming-subscriptions.html" },
+        { title: "The Future of Neural Rendering", cat: "Tech", desc: "How AI-generated pixels are replacing traditional rasterization.", url: "future-of-neural-rendering.html" },
+        { title: "Handheld Emulation Guide", cat: "Emulation", desc: "Ultimate setup guide for playing console classics on mobile hardware.", url: "handheld-emulation-guide.html" },
+        { title: "Hypervisor Safety & Risks", cat: "Security", desc: "Does gaming in a virtual machine compromise your hardware security?", url: "hypervisor-safety-risks.html" },
+        { title: "Kernel-Level Anti-Cheat Explained", cat: "Security", desc: "Why modern competitive games need such deep access to your PC.", url: "kernel-level-anticheat-explained.html" },
+        { title: "What is a Hypervisor?", cat: "Tech", desc: "A beginner-friendly guide to virtualization and how it affects gaming.", url: "what-is-hypervisor.html" }
     ];
 
-    const grid = document.getElementById('main-grid');
-    grid.innerHTML = posts.map(post => `
-        <a href="${post.url}" class="card">
-            <div class="cat-tag">${post.cat}</div>
+    const grid = document.getElementById('post-grid');
+    posts.forEach(post => {
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.href = post.url;
+        card.innerHTML = `
+            <div class="category">${post.cat}</div>
             <h3>${post.title}</h3>
             <p>${post.desc}</p>
-            <div class="btn-text">READ ARTICLE &rarr;</div>
-        </a>
-    `).join('');
+            <div style="margin-top: 15px; color: var(--primary); font-weight: bold; font-size: 0.85rem;">Read Article →</div>
+        `;
+        grid.appendChild(card);
+    });
 </script>
 
 </body>
