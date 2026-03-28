@@ -22,7 +22,7 @@
             padding-top: 80px;
         }
 
-        /* Fixed Navigation */
+        /* Fixed Navigation without the News link */
         nav {
             position: fixed;
             top: 0;
@@ -53,7 +53,10 @@
             text-decoration: none;
             margin-left: 25px;
             font-size: 0.9rem;
+            transition: color 0.3s;
         }
+
+        .nav-links a:hover { color: var(--secondary); }
 
         header {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
@@ -63,7 +66,7 @@
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin: 0;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -97,7 +100,7 @@
         .card:hover {
             transform: translateY(-5px);
             border-color: var(--secondary);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
         .category {
@@ -106,9 +109,10 @@
             font-weight: 700;
             text-transform: uppercase;
             margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        .card h3 { margin: 0 0 15px 0; font-size: 1.4rem; }
+        .card h3 { margin: 0 0 15px 0; font-size: 1.4rem; line-height: 1.3; }
 
         .card p { color: var(--text-dim); font-size: 0.95rem; flex-grow: 1; }
 
@@ -117,6 +121,7 @@
             padding: 40px 5%;
             border-top: 1px solid #334155;
             text-align: center;
+            background: #0a0f1d;
         }
 
         .footer-links a {
@@ -149,21 +154,22 @@
 <footer>
     <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="contact.html">Contact</a>
+        <a href="contact.html">Contact Us</a>
         <a href="about.html">About</a>
     </div>
+    <p style="color: #475569; font-size: 0.8rem; margin-top: 20px;">&copy; 2026 GameCore Insider.</p>
 </footer>
 
 <script>
     const posts = [
-        /* New & Trending */
-        { title: "Crimson Desert PC Optimization Guide", cat: "Performance", desc: "Achieve a stable 60 FPS in 2026's biggest RPG.", url: "crimson-desert-optimization-guide.html" },
+        /* The 5 New Trending Articles */
+        { title: "Crimson Desert PC Optimization Guide", cat: "Performance", desc: "Achieve a stable 60 FPS in 2026's biggest RPG using mid-tier hardware.", url: "crimson-desert-optimization-guide.html" },
         { title: "Marathon (2026) Starter Guide", cat: "Gaming News", desc: "Bungie's extraction shooter is brutal. Here are the best factions.", url: "marathon-2026-starter-guide.html" },
         { title: "Switch 2 Boost Mode Explained", cat: "Tech", desc: "How to tap into extra portable power for the ultimate handheld experience.", url: "switch-2-boost-mode-guide.html" },
-        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Gaming News", desc: "How generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
+        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Tech", desc: "How generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
         { title: "Mid-Tier PC Maintenance Guide", cat: "Performance", desc: "Essential cooling and cleaning tips for your gaming rig.", url: "mid-tier-hardware-maintenance-guide.html" },
         
-        /* Originals */
+        /* The Original 10 Articles */
         { title: "Best Budget Gaming Rig 2026", cat: "Hardware", desc: "The best price-to-performance parts for 1080p and 1440p gaming.", url: "best-budget-gaming-rig-2026.html" },
         { title: "Best Gaming Settings Guide", cat: "Performance", desc: "Universal settings to improve visibility and reduce latency.", url: "best-gaming-settings-guide.html" },
         { title: "The Denuvo Controversy 2026", cat: "Gaming News", desc: "An updated look at DRM's impact on CPU performance.", url: "denuvo-controversy-2026.html" },
@@ -172,37 +178,24 @@
         { title: "The Future of Neural Rendering", cat: "Tech", desc: "How AI-generated pixels are replacing traditional rasterization.", url: "future-of-neural-rendering.html" },
         { title: "Handheld Emulation Guide", cat: "Emulation", desc: "Ultimate setup guide for playing console classics on mobile hardware.", url: "handheld-emulation-guide.html" },
         { title: "Hypervisor Safety & Risks", cat: "Security", desc: "Does gaming in a virtual machine compromise your hardware security?", url: "hypervisor-safety-risks.html" },
-        { title: "Kernel-Level Anti-Cheat Explained", cat: "Security", desc: "Why modern competitive games need such deep access to your PC.", url: "kernel-level-anticheat-explained.html" },
+        { title: "Kernel-Level Anti-Cheat Explained", cat: "Security", desc: "Why modern competitive games need deep access to your PC.", url: "kernel-level-anticheat-explained.html" },
         { title: "What is a Hypervisor?", cat: "Tech", desc: "A beginner-friendly guide to virtualization and how it affects gaming.", url: "what-is-hypervisor.html" }
     ];
 
     const grid = document.getElementById('post-grid');
 
-    // Function to draw the cards on the screen
-    function renderPosts(filterData) {
-        grid.innerHTML = ''; // Clear current grid
-        filterData.forEach(post => {
-            const card = document.createElement('a');
-            card.className = 'card';
-            card.href = post.url;
-            card.innerHTML = `
-                <div class="category">${post.cat}</div>
-                <h3>${post.title}</h3>
-                <p>${post.desc}</p>
-                <div style="margin-top: 15px; color: var(--primary); font-weight: bold; font-size: 0.85rem;">Read Article →</div>
-            `;
-            grid.appendChild(card);
-        });
-    }
-
-    // Function called by the Nav link
-    function filterCategory(categoryName) {
-        const filtered = posts.filter(post => post.cat === categoryName);
-        renderPosts(filtered);
-    }
-
-    // Initial load: show all 15 articles
-    renderPosts(posts);
+    posts.forEach(post => {
+        const card = document.createElement('a');
+        card.className = 'card';
+        card.href = post.url;
+        card.innerHTML = `
+            <div class="category">${post.cat}</div>
+            <h3>${post.title}</h3>
+            <p>${post.desc}</p>
+            <div style="margin-top: 15px; color: var(--primary); font-weight: bold; font-size: 0.85rem;">Read Article →</div>
+        `;
+        grid.appendChild(card);
+    });
 </script>
 
 </body>
