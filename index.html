@@ -157,19 +157,19 @@
 
 <script>
     const posts = [
-        /* The 5 New Articles */
+        /* New & Trending */
         { title: "Crimson Desert PC Optimization Guide", cat: "Performance", desc: "Achieve a stable 60 FPS in 2026's biggest RPG.", url: "crimson-desert-optimization-guide.html" },
         { title: "Marathon (2026) Starter Guide", cat: "Gaming News", desc: "Bungie's extraction shooter is brutal. Here are the best factions.", url: "marathon-2026-starter-guide.html" },
         { title: "Switch 2 Boost Mode Explained", cat: "Tech", desc: "How to tap into extra portable power for the ultimate handheld experience.", url: "switch-2-boost-mode-guide.html" },
-        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Tech", desc: "How generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
-        { title: "Mid-Tier PC Maintenance Guide", cat: "Hardware", desc: "Essential cooling and cleaning tips for your gaming rig.", url: "mid-tier-hardware-maintenance-guide.html" },
+        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Gaming News", desc: "How generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
+        { title: "Mid-Tier PC Maintenance Guide", cat: "Performance", desc: "Essential cooling and cleaning tips for your gaming rig.", url: "mid-tier-hardware-maintenance-guide.html" },
         
-        /* The Original 10 Articles from your Files */
+        /* Originals */
         { title: "Best Budget Gaming Rig 2026", cat: "Hardware", desc: "The best price-to-performance parts for 1080p and 1440p gaming.", url: "best-budget-gaming-rig-2026.html" },
         { title: "Best Gaming Settings Guide", cat: "Performance", desc: "Universal settings to improve visibility and reduce latency.", url: "best-gaming-settings-guide.html" },
-        { title: "The Denuvo Controversy 2026", cat: "News", desc: "An updated look at DRM's impact on CPU performance.", url: "denuvo-controversy-2026.html" },
+        { title: "The Denuvo Controversy 2026", cat: "Gaming News", desc: "An updated look at DRM's impact on CPU performance.", url: "denuvo-controversy-2026.html" },
         { title: "FPS Optimization Masterclass", cat: "Performance", desc: "Deep dive into kernel-level tweaks and registry optimizations.", url: "fps-optimization-guide.html" },
-        { title: "Future of Gaming Subscriptions", cat: "News", desc: "Are we moving to a 'No Ownership' future for digital games?", url: "future-of-gaming-subscriptions.html" },
+        { title: "Future of Gaming Subscriptions", cat: "Gaming News", desc: "Are we moving to a 'No Ownership' future for digital games?", url: "future-of-gaming-subscriptions.html" },
         { title: "The Future of Neural Rendering", cat: "Tech", desc: "How AI-generated pixels are replacing traditional rasterization.", url: "future-of-neural-rendering.html" },
         { title: "Handheld Emulation Guide", cat: "Emulation", desc: "Ultimate setup guide for playing console classics on mobile hardware.", url: "handheld-emulation-guide.html" },
         { title: "Hypervisor Safety & Risks", cat: "Security", desc: "Does gaming in a virtual machine compromise your hardware security?", url: "hypervisor-safety-risks.html" },
@@ -178,18 +178,32 @@
     ];
 
     const grid = document.getElementById('post-grid');
-    posts.forEach(post => {
-        const card = document.createElement('a');
-        card.className = 'card';
-        card.href = post.url;
-        card.innerHTML = `
-            <div class="category">${post.cat}</div>
-            <h3>${post.title}</h3>
-            <p>${post.desc}</p>
-            <div style="margin-top: 15px; color: var(--primary); font-weight: bold; font-size: 0.85rem;">Read Article →</div>
-        `;
-        grid.appendChild(card);
-    });
+
+    // Function to draw the cards on the screen
+    function renderPosts(filterData) {
+        grid.innerHTML = ''; // Clear current grid
+        filterData.forEach(post => {
+            const card = document.createElement('a');
+            card.className = 'card';
+            card.href = post.url;
+            card.innerHTML = `
+                <div class="category">${post.cat}</div>
+                <h3>${post.title}</h3>
+                <p>${post.desc}</p>
+                <div style="margin-top: 15px; color: var(--primary); font-weight: bold; font-size: 0.85rem;">Read Article →</div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Function called by the Nav link
+    function filterCategory(categoryName) {
+        const filtered = posts.filter(post => post.cat === categoryName);
+        renderPosts(filtered);
+    }
+
+    // Initial load: show all 15 articles
+    renderPosts(posts);
 </script>
 
 </body>
