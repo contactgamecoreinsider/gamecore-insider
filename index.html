@@ -108,113 +108,41 @@
 </div>
 
 <script>
+    const grid = document.getElementById('post-grid');
+    
+    // Test if the script is even running
+    console.log("Script is starting...");
+
     const posts = [
-        {
-            title: "Crimson Desert PC Optimization Guide",
-            cat: "Performance",
-            desc: "Achieve a stable 60 FPS in 2026's biggest RPG using mid-tier graphics hardware.",
-            url: "crimson-desert-optimization-guide.html"
-        },
-        {
-            title: "Marathon (2026) Starter Guide",
-            cat: "Gaming News",
-            desc: "Bungie's extraction shooter is brutal. Here are the best factions for new players.",
-            url: "marathon-2026-starter-guide.html"
-        },
-        {
-            title: "Switch 2 Boost Mode Explained",
-            cat: "Tech",
-            desc: "How to tap into extra portable power for the ultimate handheld experience.",
-            url: "switch-2-boost-mode-guide.html"
-        },
-        {
-            title: "AI NPCs: Innovation or 'Game Slop'?",
-            cat: "Gaming News",
-            desc: "A look at how generative AI is changing (and sometimes ruining) modern NPCs.",
-            url: "ai-npcs-innovation-or-slop.html"
-        },
-        {
-            title: "Mid-Tier PC Maintenance Guide",
-            cat: "Performance",
-            desc: "Keep your hardware running like new with these essential cooling and cleaning tips.",
-            url: "mid-tier-hardware-maintenance-guide.html"
-        },
-        {
-            title: "Optimizing BotW on Mobile",
-            cat: "Emulation",
-            desc: "How to use UltraCam and 60FPS mods for the smoothest experience.",
-            url: "botw-mobile-optimization.html"
-        },
-        {
-            title: "Cemu vs Yuzu: 2026 Comparison",
-            cat: "Emulation",
-            desc: "Which emulator reigns supreme for Nintendo titles this year?",
-            url: "emulator-comparison-2026.html"
-        },
-        {
-            title: "Valorant Ranking System 2026",
-            cat: "Competitive",
-            desc: "A deep dive into the new MMR adjustments and seasonal rewards.",
-            url: "valorant-ranking-2026.html"
-        },
-        {
-            title: "EA FC 26: What to Expect",
-            cat: "Gaming News",
-            desc: "Breakdown of the new Career Mode features and HyperMotion 4.0.",
-            url: "ea-fc-26-features.html"
-        },
-        {
-            title: "Fixing Xbox Controller Stick Drift",
-            cat: "Hardware",
-            desc: "A hands-on repair guide for swapping analog modules safely.",
-            url: "controller-repair-guide.html"
-        },
-        {
-            title: "Building a YouTube Gaming Brand",
-            cat: "Content Creation",
-            desc: "How to design banners and logos that attract subscribers in 2026.",
-            url: "gaming-brand-building.html"
-        },
-        {
-            title: "TikTok Live Studio Best Settings",
-            cat: "Streaming",
-            desc: "Optimizing your bitrate and encoder for a lag-free mobile stream.",
-            url: "tiktok-live-settings.html"
-        },
-        {
-            title: "Vinícius Júnior: Season Stats",
-            cat: "Football",
-            desc: "Analyzing the performance of the world's most dangerous winger.",
-            url: "vinicius-stats-2026.html"
-        },
-        {
-            title: "Top 5 Mobile Gaming Controllers",
-            cat: "Hardware",
-            desc: "The best physical controls for competitive mobile gaming.",
-            url: "mobile-controllers-review.html"
-        },
-        {
-            title: "The Future of Cloud Gaming",
-            cat: "Tech",
-            desc: "Will low-latency cloud gaming replace the home console by 2030?",
-            url: "future-of-cloud-gaming.html"
-        }
+        { title: "Crimson Desert PC Optimization Guide", cat: "Performance", desc: "Achieve a stable 60 FPS in 2026's biggest RPG using mid-tier graphics hardware.", url: "crimson-desert-optimization-guide.html" },
+        { title: "Marathon (2026) Starter Guide", cat: "Gaming News", desc: "Bungie's extraction shooter is brutal. Here are the best factions for new players.", url: "marathon-2026-starter-guide.html" },
+        { title: "Switch 2 Boost Mode Explained", cat: "Tech", desc: "How to tap into extra portable power for the ultimate handheld experience.", url: "switch-2-boost-mode-guide.html" },
+        { title: "AI NPCs: Innovation or 'Game Slop'?", cat: "Gaming News", desc: "A look at how generative AI is changing (and sometimes ruining) modern NPCs.", url: "ai-npcs-innovation-or-slop.html" },
+        { title: "Mid-Tier PC Maintenance Guide", cat: "Performance", desc: "Keep your hardware running like new with these essential cooling and cleaning tips.", url: "mid-tier-hardware-maintenance-guide.html" },
+        { title: "Optimizing BotW on Mobile", cat: "Emulation", desc: "How to use UltraCam and 60FPS mods for the smoothest experience.", url: "botw-mobile-optimization.html" },
+        { title: "Cemu vs Yuzu: 2026 Comparison", cat: "Emulation", desc: "Which emulator reigns supreme for Nintendo titles this year?", url: "emulator-comparison-2026.html" },
+        { title: "Valorant Ranking System 2026", cat: "Competitive", desc: "A deep dive into the new MMR adjustments and seasonal rewards.", url: "valorant-ranking-2026.html" },
+        { title: "EA FC 26: What to Expect", cat: "Gaming News", desc: "Breakdown of the new Career Mode features and HyperMotion 4.0.", url: "ea-fc-26-features.html" },
+        { title: "Fixing Xbox Controller Stick Drift", cat: "Hardware", desc: "A hands-on repair guide for swapping analog modules safely.", url: "controller-repair-guide.html" },
+        { title: "Building a YouTube Gaming Brand", cat: "Content Creation", desc: "How to design banners and logos that attract subscribers in 2026.", url: "gaming-brand-building.html" },
+        { title: "TikTok Live Studio Best Settings", cat: "Streaming", desc: "Optimizing your bitrate and encoder for a lag-free mobile stream.", url: "tiktok-live-settings.html" },
+        { title: "Vinícius Júnior: Season Stats", cat: "Football", desc: "Analyzing the performance of the world's most dangerous winger.", url: "vinicius-stats-2026.html" },
+        { title: "Top 5 Mobile Gaming Controllers", cat: "Hardware", desc: "The best physical controls for competitive mobile gaming.", url: "mobile-controllers-review.html" },
+        { title: "The Future of Cloud Gaming", cat: "Tech", desc: "Will low-latency cloud gaming replace the home console by 2030?", url: "future-of-cloud-gaming.html" }
     ];
 
-    const grid = document.getElementById('post-grid');
-
-    posts.forEach(post => {
-        const card = document.createElement('a');
-        card.className = 'card';
-        card.href = post.url;
-        card.innerHTML = `
-            <div class="category">${post.cat}</div>
-            <h3>${post.title}</h3>
-            <p>${post.desc}</p>
-            <div class="read-more">Read Article →</div>
+    let html = '';
+    for (let i = 0; i < posts.length; i++) {
+        html += `
+            <a href="${posts[i].url}" class="card">
+                <div class="category">${posts[i].cat}</div>
+                <h3>${posts[i].title}</h3>
+                <p>${posts[i].desc}</p>
+                <div class="read-more">Read Article →</div>
+            </a>
         `;
-        grid.appendChild(card);
-    });
+    }
+    grid.innerHTML = html;
 </script>
 
 </body>
